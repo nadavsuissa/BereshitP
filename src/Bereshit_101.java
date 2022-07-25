@@ -27,7 +27,7 @@ public class Bereshit_101 {
     public double time;
     public double dt; // sec
     public double acc; // Acceleration rate (m/s^2)
-    public double fuel; //
+    public static double fuel; //
     public double weight;
     public PID pid = new PID();
 
@@ -59,26 +59,26 @@ public class Bereshit_101 {
         this.pid = pid;
     }
 
-    public Bereshit_101() { }
+    public Bereshit_101() {
+    }
 
     /**
      * Init all the parameters for the simulation
      */
-    public void init() {
-        // starting point:
-        vs = 24.8;
-        hs = 932;
-        dist = 181 * 1000;
-        ang = 58.3; // zero is vertical (as in landing)
-        alt = 30000; // meters
-        time = 0;
-        dt = 1; // sec
-        acc = 0; // Acceleration rate (m/s^2)
-        fuel = 350;
-        weight = WEIGHT_EMP + fuel;
-        pid.setSetPoint(0.00045);
-        pid.setP(0.0000004);
-        pid.setI(0.00000155);
-        pid.setD(dt);
+    // starting point:
+    public void init(double vs, double hs, double dist, double ang, double alt, double time,
+                     double dt, double acc, double fuel, double weight, PID pid) {
+        this.vs = vs;
+        this.hs = hs;
+        this.dist = dist;
+        this.ang = ang;
+        this.alt = alt;
+        this.time = time;
+        this.dt = dt;
+        this.acc = acc;
+        this.fuel = fuel;
+        this.weight = weight;
+        this.pid = pid;
+
     }
 }

@@ -1,18 +1,16 @@
 import PID_CON.PID;
 
+
 public class Simulation {
+    Bereshit_101 bereshit = new Bereshit_101();
 
     Simulation(double vs, double hs, double dist, double ang, double alt, double time,
                double dt, double acc, double fuel, double weight, PID pid) {
-
+        bereshit.init(vs,hs,dist,ang,alt,time,dt,acc,fuel,weight,pid);
     }
-
 
     public void run() {
 
-        Bereshit_101 bereshit = new Bereshit_101();
-        System.out.println("** Simulating Bereshit's Landing: **");
-        bereshit.init();
         String title = String.format("%10s %10s %10s %10s %10s %10s %10s %10s ",
                 "time", "vs", "hs", "dist", "alt", "ang", "weight", "acc");
         System.out.println(title);
@@ -33,6 +31,7 @@ public class Simulation {
                         bereshit.fuel);
                 System.out.println(log);
             }
+
             // over 2 km above the ground
             if (bereshit.alt > 2000) {
                 // maintain a vertical speed of [20-25] m/s
@@ -79,12 +78,13 @@ public class Simulation {
             double vacc = Moon.getAcc(bereshit.hs);
             bereshit.time += bereshit.dt;
             double dw = bereshit.dt * Bereshit_101.ALL_BURN * NN;
-
-            if (bereshit.fuel > 0) { // there is enough fuel
+            // check if there is enough fuel
+            if (bereshit.fuel > 0) {
                 bereshit.fuel -= dw;
                 bereshit.weight = Bereshit_101.WEIGHT_EMP + bereshit.fuel;
                 bereshit.acc = NN * bereshit.accMax(bereshit.weight);
-            } else { // ran out of fuel
+            }
+            else { // ran out of fuel
                 bereshit.acc = 0;
             }
 
