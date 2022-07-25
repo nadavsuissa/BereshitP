@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3249702e-d641-4497-ab78-0978417222cc" name="Changes" comment="fix prints">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Bereshit_101.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bereshit_101.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Moon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Moon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PID_CON/PID.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PID_CON/PID.java" afterDir="false" />
-    </list>
+    <list default="true" id="3249702e-d641-4497-ab78-0978417222cc" name="Changes" comment="fix pid" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -72,7 +67,13 @@
       <option name="presentableId" value="LOCAL‎00001" />
       <updated>1658731172989</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL‎00002" summary="fix pid">
+      <created>1658732908434</created>
+      <option name="number" value="LOCAL‎00002" />
+      <option name="presentableId" value="LOCAL‎00002" />
+      <updated>1658732908434</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -88,6 +89,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="fix prints" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix prints" />
+    <MESSAGE value="fix pid" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix pid" />
   </component>
 </project>
