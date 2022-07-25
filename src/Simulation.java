@@ -1,5 +1,14 @@
+import PID_CON.PID;
+
 public class Simulation {
-    public static void main(String[] args) {
+
+    Simulation(double vs, double hs, double dist, double ang, double alt, double time,
+               double dt, double acc, double fuel, double weight, PID pid) {
+
+    }
+
+
+    public void run() {
 
         Bereshit_101 bereshit = new Bereshit_101();
         System.out.println("** Simulating Bereshit's Landing: **");
