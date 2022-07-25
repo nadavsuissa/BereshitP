@@ -7,6 +7,7 @@ import PID_CON.PID;
  */
 public class Bereshit_101 {
 
+    // Static constants of Bereshit
     public static final double WEIGHT_EMP = 165; // kg
     public static final double WEIGHT_FULE = 420; // kg
     public static final double WEIGHT_FULL = WEIGHT_EMP + WEIGHT_FULE; // kg
@@ -43,6 +44,22 @@ public class Bereshit_101 {
         ans /= weight;
         return ans;
     }
+
+    public Bereshit_101(double vs, double hs, double dist, double ang, double alt, double time, double dt, double acc, double fuel, double weight, PID pid) {
+        this.vs = vs;
+        this.hs = hs;
+        this.dist = dist;
+        this.ang = ang;
+        this.alt = alt;
+        this.time = time;
+        this.dt = dt;
+        this.acc = acc;
+        this.fuel = fuel;
+        this.weight = weight;
+        this.pid = pid;
+    }
+
+    public Bereshit_101() { }
 
     /**
      * Init all the parameters for the simulation
