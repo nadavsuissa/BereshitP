@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3249702e-d641-4497-ab78-0978417222cc" name="Changes" comment="fix pid" />
+    <list default="true" id="3249702e-d641-4497-ab78-0978417222cc" name="Changes" comment="update git ignore">
+      <change afterPath="$PROJECT_DIR$/src/Simulation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Bereshit_101.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bereshit_101.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,7 +42,7 @@
       <recent name="C:\Users\97252\Desktop\BereshitP\src" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Simulation">
     <configuration name="Bereshit_101" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Bereshit_101" />
       <module name="BereshitP" />
@@ -46,8 +50,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Simulation" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Simulation" />
+      <module name="BereshitP" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Simulation" />
         <item itemvalue="Application.Bereshit_101" />
       </list>
     </recent_temporary>
@@ -73,7 +85,19 @@
       <option name="presentableId" value="LOCAL‎00002" />
       <updated>1658732908434</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL‎00003" summary="add crash report">
+      <created>1658733116973</created>
+      <option name="number" value="LOCAL‎00003" />
+      <option name="presentableId" value="LOCAL‎00003" />
+      <updated>1658733116973</updated>
+    </task>
+    <task id="LOCAL‎00004" summary="update git ignore">
+      <created>1658733245343</created>
+      <option name="number" value="LOCAL‎00004" />
+      <option name="presentableId" value="LOCAL‎00004" />
+      <updated>1658733245343</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -90,6 +114,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="fix prints" />
     <MESSAGE value="fix pid" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix pid" />
+    <MESSAGE value="add crash report" />
+    <MESSAGE value="update git ignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="update git ignore" />
   </component>
 </project>

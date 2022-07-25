@@ -18,23 +18,23 @@ public class Bereshit_101 {
     public static final double ALL_BURN = MAIN_BURN + 8 * SECOND_BURN;
 
 
-    public static double vs;
-    public static double hs;
-    public static double dist;
-    public static double ang; // zero is vertical (as in landing)
-    public static double alt; // 2:25:40 (as in the simulation) // https://www.youtube.com/watch?v=JJ0VfRL9AMs
-    public static double time;
-    public static double dt; // sec
-    public static double acc; // Acceleration rate (m/s^2)
-    public static double fuel; //
-    public static double weight;
-    public static PID pid = new PID();
+    public double vs;
+    public double hs;
+    public double dist;
+    public double ang; // zero is vertical (as in landing)
+    public double alt; // 2:25:40 (as in the simulation) // https://www.youtube.com/watch?v=JJ0VfRL9AMs
+    public double time;
+    public double dt; // sec
+    public double acc; // Acceleration rate (m/s^2)
+    public double fuel; //
+    public double weight;
+    public PID pid = new PID();
 
-    public static double accMax(double weight) {
+    public double accMax(double weight) {
         return acc(weight, true, 8);
     }
 
-    public static double acc(double weight, boolean main, int seconds) {
+    public double acc(double weight, boolean main, int seconds) {
         double ans = 0;
         if (main) {
             ans += MAIN_ENG_F;
@@ -47,7 +47,7 @@ public class Bereshit_101 {
     /**
      * Init all the parameters for the simulation
      */
-    public static void init() {
+    public void init() {
         // starting point:
         vs = 24.8;
         hs = 932;
@@ -63,83 +63,5 @@ public class Bereshit_101 {
         pid.setP(0.0000004);
         pid.setI(0.00000155);
         pid.setD(dt);
-    }
-
-    public static void main(String[] args) {
-        System.out.println("** Simulating Bereshit's Landing: **");
-        init();
-        String title = String.format("%10s %10s %10s %10s %10s %10s %10s %10s ",
-                "time", "vs", "hs", "dist", "alt", "ang", "weight", "acc");
-        System.out.println(title);
-        double NN = 0.7; // rate[0,1]
-
-        // ***** main simulation loop ******
-        while (alt > 0) {
-            if (time % 10 == 0 || alt < 100) {
-                String log = String.format("%10.4f %10.4f %10.4f %10.4f %10.4f %10.4f %10.4f %10.4f ",
-                        time, vs, hs, dist, alt, ang, weight, acc);
-                System.out.println(log);
-            }
-            // over 2 km above the ground
-            if (alt > 2000) {
-                // maintain a vertical speed of [20-25] m/s
-                if (vs > 25) {
-                    NN += 0.003 * dt;
-                } // more power for braking
-                if (vs < 20) {
-                    NN -= 0.003 * dt;
-                } // less power for braking
-            }
-            // lower than 2 km - horizontal speed should be close to zero
-            else {
-                if (ang > 3) {
-                    ang -= 3;
-                } // rotate to vertical position.
-                else {
-                    ang = 0;
-                }
-                double pid_output = pid.getOutput(time, alt);
-                if (pid_output > 10) {
-                    NN = 0;
-                }
-                if (pid_output < 0) {
-                    NN = 0.5;
-                }
-                if (hs < 2) {
-                    hs = 0;
-                }
-                if (alt < 110) { // very close to the ground!
-                    NN = 1; // maximum braking!
-                    if (vs < 5) {
-                        NN = 0.7;
-                    } // if it is slow enough - go easy on the brakes
-                }
-            }
-            if (alt < 5) { // no need to stop
-                NN = 0.4;
-            }
-            // main computations
-            double ang_rad = Math.toRadians(ang);
-            double h_acc = Math.sin(ang_rad) * acc;
-            double v_acc = Math.cos(ang_rad) * acc;
-            double vacc = Moon.getAcc(hs);
-            time += dt;
-            double dw = dt * ALL_BURN * NN;
-            if (fuel > 0) {
-                fuel -= dw;
-                weight = WEIGHT_EMP + fuel;
-                acc = NN * accMax(weight);
-            } else { // ran out of fuel
-                acc = 0;
-            }
-
-            v_acc -= vacc;
-            if (hs > 0) {
-                hs -= h_acc * dt;
-            }
-            dist -= hs * dt;
-            vs -= v_acc * dt;
-            alt -= dt * vs;
-        }
     }
 }
