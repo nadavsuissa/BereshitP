@@ -16,6 +16,8 @@ public class Bereshit_101 {
     public static final double MAIN_BURN = 0.15; //liter per sec, 12 liter per m'
     public static final double SECOND_BURN = 0.009; //liter per sec 0.6 liter per m'
     public static final double ALL_BURN = MAIN_BURN + 8 * SECOND_BURN;
+
+
     public static double vs;
     public static double hs;
     public static double dist;
@@ -33,30 +35,34 @@ public class Bereshit_101 {
     }
 
     public static double acc(double weight, boolean main, int seconds) {
-        double t = 0;
+        double ans = 0;
         if (main) {
-            t += MAIN_ENG_F;
+            ans += MAIN_ENG_F;
         }
-        t += seconds * SECOND_ENG_F;
-        return t / weight;
+        ans += seconds * SECOND_ENG_F;
+        ans /= weight;
+        return ans;
     }
 
+    /**
+     * Init all the parameters for the simulation
+     */
     public static void init() {
         // starting point:
         vs = 24.8;
         hs = 932;
         dist = 181 * 1000;
         ang = 58.3; // zero is vertical (as in landing)
-        alt = 13748; // 2:25:40 (as in the simulation) // https://www.youtube.com/watch?v=JJ0VfRL9AMs
+        alt = 30000; // meters
         time = 0;
         dt = 1; // sec
         acc = 0; // Acceleration rate (m/s^2)
-        fuel = 121; //
+        fuel = 121;
         weight = WEIGHT_EMP + fuel;
-        pid.setSetpoint(0.00045);
-        pid.setkP(0.0000004);
-        pid.setkI(0.00000155);
-        pid.setkD(dt);
+        pid.setSetPoint(0.00045);
+        pid.setP(0.0000004);
+        pid.setI(0.00000155);
+        pid.setD(dt);
     }
 
     public static void main(String[] args) {
@@ -73,10 +79,10 @@ public class Bereshit_101 {
                 String log = String.format("%10.4f %10.4f %10.4f %10.4f %10.4f %10.4f %10.4f %10.4f ",
                         time, vs, hs, dist, alt, ang, weight, acc);
                 System.out.println(log);
-//                System.out.println(time + "," + vs + "," + hs + "," + dist + "," + alt + "," + ang + "," + weight + "," + acc);
             }
             // over 2 km above the ground
-            if (alt > 2000) {    // maintain a vertical speed of [20-25] m/s
+            if (alt > 2000) {
+                // maintain a vertical speed of [20-25] m/s
                 if (vs > 25) {
                     NN += 0.003 * dt;
                 } // more power for braking
