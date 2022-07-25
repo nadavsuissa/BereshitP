@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3249702e-d641-4497-ab78-0978417222cc" name="Changes" comment="update git ignore">
-      <change afterPath="$PROJECT_DIR$/src/Simulation.java" afterDir="false" />
+    <list default="true" id="3249702e-d641-4497-ab78-0978417222cc" name="Changes" comment="create Simulation class">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Bereshit_101.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bereshit_101.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +97,19 @@
       <option name="presentableId" value="LOCAL‎00004" />
       <updated>1658733245343</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL‎00005" summary="create Simulation class">
+      <created>1658735849855</created>
+      <option name="number" value="LOCAL‎00005" />
+      <option name="presentableId" value="LOCAL‎00005" />
+      <updated>1658735849855</updated>
+    </task>
+    <task id="LOCAL‎00006" summary="create Simulation class">
+      <created>1658735949641</created>
+      <option name="number" value="LOCAL‎00006" />
+      <option name="presentableId" value="LOCAL‎00006" />
+      <updated>1658735949641</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -116,6 +128,7 @@
     <MESSAGE value="fix pid" />
     <MESSAGE value="add crash report" />
     <MESSAGE value="update git ignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="update git ignore" />
+    <MESSAGE value="create Simulation class" />
+    <option name="LAST_COMMIT_MESSAGE" value="create Simulation class" />
   </component>
 </project>

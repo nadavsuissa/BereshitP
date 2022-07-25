@@ -74,7 +74,7 @@ public class Bereshit_101 {
         time = 0;
         dt = 1; // sec
         acc = 0; // Acceleration rate (m/s^2)
-        fuel = 121;
+        fuel = 350;
         weight = WEIGHT_EMP + fuel;
         pid.setSetPoint(0.00045);
         pid.setP(0.0000004);

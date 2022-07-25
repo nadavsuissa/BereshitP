@@ -12,7 +12,7 @@ public class Simulation {
         // ***** main simulation loop ******
         while (bereshit.alt > 0) {
             if (bereshit.time % 10 == 0 || bereshit.alt < 100) {
-                String log = String.format("%10.4f %10.4f %10.4f %10.4f %10.4f %10.4f %10.4f %10.4f ",
+                String log = String.format("%10.4f %10.4f %10.4f %10.4f %10.4f %10.4f %10.4f %10.4f %10.4f ",
                         bereshit.time,
                         bereshit.vs,
                         bereshit.hs,
@@ -20,7 +20,8 @@ public class Simulation {
                         bereshit.alt,
                         bereshit.ang,
                         bereshit.weight,
-                        bereshit.acc);
+                        bereshit.acc,
+                        bereshit.fuel);
                 System.out.println(log);
             }
             // over 2 km above the ground
@@ -42,25 +43,26 @@ public class Simulation {
                     bereshit.ang = 0;
                 }
                 double pid_output = bereshit.pid.getOutput(bereshit.time, bereshit.alt);
+                if (bereshit.hs < 2) {
+                    bereshit.hs = 0;
+                }
                 if (pid_output > 10) {
                     NN = 0;
                 }
                 if (pid_output < 0) {
                     NN = 0.5;
                 }
-                if (bereshit.hs < 2) {
-                    bereshit.hs = 0;
-                }
-                if (bereshit.alt < 110) { // very close to the ground!
-                    NN = 1; // maximum braking!
+                if (bereshit.alt < 110) { // close to the ground!
+                    NN = 1;
                     if (bereshit.vs < 5) {
                         NN = 0.7;
-                    } // if it is slow enough - go easy on the brakes
+                    }
                 }
             }
-            if (bereshit.alt < 5) { // no need to stop
+            if (bereshit.alt < 5) {
                 NN = 0.4;
             }
+
             // main computations
             double ang_rad = Math.toRadians(bereshit.ang);
             double h_acc = Math.sin(ang_rad) * bereshit.acc;
@@ -68,7 +70,8 @@ public class Simulation {
             double vacc = Moon.getAcc(bereshit.hs);
             bereshit.time += bereshit.dt;
             double dw = bereshit.dt * Bereshit_101.ALL_BURN * NN;
-            if (bereshit.fuel > 0) {
+
+            if (bereshit.fuel > 0) { // there is enough fuel
                 bereshit.fuel -= dw;
                 bereshit.weight = Bereshit_101.WEIGHT_EMP + bereshit.fuel;
                 bereshit.acc = NN * bereshit.accMax(bereshit.weight);
